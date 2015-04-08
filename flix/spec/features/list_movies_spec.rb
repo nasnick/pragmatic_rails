@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "viewing the list of movies" do
   it "shows the movies" do
-  visit 'http://example.com/movies'
+  visit movies_url
   
   expect(page).to have_text("3 Movies")
   expect(page).to have_text("Movie 1") 
