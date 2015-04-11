@@ -8,12 +8,12 @@ describe "Shows the contents of the show page" do
                           description: "Tony Stark builds an armored suit to fight the throes of evil",
                           released_on: "2008-05-02")
   
-   visit "http://example.com/#{movie.id}"
+   visit movie_url(movie)
    
    expect(page).to have_text(movie.title)
    expect(page).to have_text(movie.rating)
    expect(page).to have_text("$318,412,101.00")
    expect(page).to have_text(movie.description)
    expect(page).to have_text(movie.released_on)
- end
+  end
 end
