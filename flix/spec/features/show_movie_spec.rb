@@ -36,4 +36,3 @@ describe "Shows the contents of the show page" do
    end
   end
 end
-hello
