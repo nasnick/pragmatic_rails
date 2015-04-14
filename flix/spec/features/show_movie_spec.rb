@@ -14,7 +14,7 @@ describe "Shows the contents of the show page" do
   end
   
   describe "displays total gross" do
-    it "shows the total gross if the movie exceeds 50M" do
+    it "shows the total gross if the movie exceeds $50M" do
     
       movie = Movie.create(movie_attributes(total_gross: 60000000.00))
 
@@ -25,7 +25,7 @@ describe "Shows the contents of the show page" do
 
 
   describe "displays total gross" do
-    it "shows 'flop!' if the total gross is less than 50M" do
+    it "shows 'flop!' if the total gross is less than $50M" do
     
       movie = Movie.create(movie_attributes(total_gross: 49000000.00))
 
@@ -36,3 +36,4 @@ describe "Shows the contents of the show page" do
    end
   end
 end
+hello
