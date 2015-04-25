@@ -1,6 +1,11 @@
 class MoviesController < ApplicationController
+  
   def index
-    @movies = Movie.where('total_gross > 50000000')
+    @movies = Movie.movie_success
+  end
+  
+  def all
+    @movies = Movie.all.order(total_gross: :desc)
   end
   
   def show
