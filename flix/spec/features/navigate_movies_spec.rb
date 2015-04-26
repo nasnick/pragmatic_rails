@@ -6,7 +6,7 @@ describe "Navigating movies" do
 
     visit movie_url(movie)
 
-    click_link "Movies"
+    click_link "Viewable Movies"
 
     expect(current_path).to eq(movies_path)
 

@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   end
   
   def all
-    @movies = Movie.all.order(total_gross: :desc)
+    @movies = Movie.all_ordered
   end
   
   def show
