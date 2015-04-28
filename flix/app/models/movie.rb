@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
     total_gross.blank? || total_gross < 50000000
   end
   
-  def self.movie_viewable
+  def self.released
     time = Time.now
     @movies = where("released_on <= ?", time).order(released_on: :desc)
   end
