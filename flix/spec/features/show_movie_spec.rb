@@ -33,6 +33,19 @@ describe "Shows the contents of the show page" do
 
       expect(page).to have_text("FLOP!")
     end
+    
+    describe "it displays images fields" do
+      it "has a field to specify an image" do
+      
+      movie = Movie.create(movie_attributes(image_file_name: 'default.png'))
+      
+      visit movie_url(movie)
+      expect(page).to have_selector("img[src$='#{movie.image_file_name}']")
+      expect(page).to have_text(movie.cast)
+      expect(page).to have_text(movie.director)
+      expect(page).to have_text(movie.duration)
+    end
+    end
    end
   end
 end
