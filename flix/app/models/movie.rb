@@ -14,3 +14,6 @@ class Movie < ActiveRecord::Base
 end
 
 #Movie.where("total_gross >= ?", 50000000).order(total_gross: :desc).to_sql
+
+# Movie.all.order(created_at: :desc).limit(3).to_sql
+# => "SELECT  \"movies\".* FROM \"movies\"  ORDER BY \"movies\".\"created_at\" DESC LIMIT 3"

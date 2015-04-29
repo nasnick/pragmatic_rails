@@ -25,5 +25,6 @@ describe "Creating a new movie" do
     expect(current_path).to eq(movie_path(Movie.last))
 
     expect(page).to have_text('New Movie Title')
+    expect(page).to have_selector("img[src$='#{movie.image_file_name}']")
   end
 end
