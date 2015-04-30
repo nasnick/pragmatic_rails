@@ -2,7 +2,7 @@
   <header>
     <h1><%= @movie.title %></h1>
   </header>
-  <h3><%=image_tag(@movie.image_file_name)%>
+   <%= image_for(@movie) %>
   <h2>Description</h2>
   <p>
     <%= @movie.description %>
