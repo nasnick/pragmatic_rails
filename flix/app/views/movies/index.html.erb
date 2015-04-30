@@ -7,6 +7,9 @@
     <header>
       <h2><%= link_to movie.title, movie %></h2>
     </header>
+    <tr>
+      <td><%= image_tag(movie.image_file_name) %></td>
+    </tr>
     <p>
       <%= truncate(movie.description, length: 40, separator: ' ') %>
     </p>
@@ -23,7 +26,19 @@
         <th>Total Gross:</th>
         <td><%= check_movie_success(movie) %></td>
       </tr>
+      <tr>
+        <th>Cast:</th>
+        <td><%= movie.cast %></td>
+      </tr>
+      <tr>
+        <th>Director:</th>
+        <td><%= movie.director %></td>
+      </tr>
+      <tr>
+        <th>Duration:</th>
+        <td><%= movie.duration %></td>
+      </tr>
     </table>
   </article>
 <% end %>
-<%= link_to "All", movies_all_path %>
+<!-- <%= link_to "All", movies_all_path %> -->
