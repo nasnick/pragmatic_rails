@@ -29,4 +29,5 @@ Movie.create!([
   }
 ])
 
-# 'rake db:reset' to start from scratch  
+#'rake db:reset' to start from scratch
+#'rake db:seed'
