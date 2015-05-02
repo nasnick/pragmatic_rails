@@ -1,0 +1,28 @@
+@import "colours";
+
+header#page-header {
+  color: $white;
+  background: $blue;
+  padding: 5px;
+  border-bottom: 3px solid darken($blue, 10%);
+  h1 {
+   text-align: center;
+   text-transform: uppercase;
+ }
+}
+
+aside#sidebar {
+  color: $white;
+  background: $white;
+  width: 200px;
+  float: right;
+}
+
+footer#page-footer {
+  color: $blue;
+  background: $white;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 3px solid darken($blue, 10%);
+}
+
