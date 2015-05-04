@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reviews
+  resources :users
 
   root "movies#index"
   resources :movies
