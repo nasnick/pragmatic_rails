@@ -22,6 +22,8 @@ fieldset {
     padding: 0;
 
     li {
+		 //Title box nested in a 'li' class of 'required' and the div class 'field_with_errors' is nested in this class.
+		 //See bottom for source.  
       margin: 0 0 20px 0;
       padding: 0;
 
@@ -77,3 +79,7 @@ input[type="submit"] {
 	background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, from(rgb(238, 238, 238)), to(rgb(204, 204, 204)));
 	background-image:-moz-linear-gradient(-90deg, rgb(238, 238, 238), rgb(204, 204, 204));
 }
+//<li class="required">
+//        <div class="field_with_errors"><label for="movie_title">Title</label></div>
+//        <div class="field_with_errors"><input autofocus="autofocus" id="movie_title" name="movie[title]" type="text" value="" /></div>
+//      </li>
