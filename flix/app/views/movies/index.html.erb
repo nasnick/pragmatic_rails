@@ -1,4 +1,9 @@
 <ul id="movies">
+	
+	<% if flash[:notice] %>
+	<p class="flash notice">
+	<%= flash[:notice] %>
+	<% end %>
   <% @movies.each do |movie| %>
     <li>
       <article class="movie">
