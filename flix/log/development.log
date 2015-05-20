@@ -8388,3 +8388,5 @@ Processing by ReviewsController#index as HTML
   Rendered layouts/_sidebar.html.erb (0.5ms)
   Rendered layouts/_footer.html.erb (0.2ms)
 Completed 200 OK in 175ms (Views: 170.8ms | ActiveRecord: 0.5ms)
+  [1m[36mMovie Load (2.0ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = 1 LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
