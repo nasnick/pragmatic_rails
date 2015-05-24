@@ -103,3 +103,14 @@ Movie.create!([
     total_gross: 387_623_910
   }
 ])
+movie = Movie.find_by(title: "Iron Man")
+movie.reviews.create!([
+  {name: "Man Child", 
+  stars: 3, 
+  comment: "Oh what a night"},
+  {
+    name:"Lover Boy",
+    stars:3,
+    comment:"Dancing in the park and doing smelly",
+  }
+])

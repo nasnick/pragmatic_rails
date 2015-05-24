@@ -8585,3 +8585,701 @@ Processing by MoviesController#edit as HTML
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 146ms (Views: 143.5ms | ActiveRecord: 0.2ms)
   [1m[36mMovie Load (5.8ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[36mMovie Load (0.7ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mReview Load (3.5ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "reviews" ("created_at", "movie_id", "updated_at") VALUES (?, ?, ?)  [["created_at", "2015-05-22 22:26:05.000594"], ["movie_id", 1], ["updated_at", "2015-05-22 22:26:05.000594"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.5ms)[0m  SELECT  "reviews".* FROM "reviews"   ORDER BY "reviews"."id" ASC LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "reviews" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-05-22 22:33:29.639221"], ["updated_at", "2015-05-22 22:33:29.639221"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (2.0ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mMovie Load (3.2ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (3.8ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 1]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" varchar(255), "total_gross" decimal, "created_at" datetime, "updated_at" datetime, "description" text, "released_on" date, "cast" varchar(255), "director" varchar(255), "duration" varchar(255), "image_file_name" varchar(255)) [0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "stars" integer, "comment" text, "movie_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX "index_reviews_on_movie_id" ON "reviews" ("movie_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150504100621')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121121163535')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121121180707')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121210234158')[0m
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"   ORDER BY "movies"."id" ASC LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 2]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 03:20:01.625315"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 03:20:01.625315"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 03:20:01.631902"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 03:20:01.631902"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 03:20:01.635159"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 03:20:01.635159"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 03:20:01.638248"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 03:20:01.638248"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 03:20:01.641481"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 03:20:01.641481"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 03:20:01.644615"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 03:20:01.644615"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mMovie Load (1.7ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 12]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "reviews" ("created_at", "movie_id", "updated_at") VALUES (?, ?, ?)  [["created_at", "2015-05-23 03:26:03.938824"], ["movie_id", 12], ["updated_at", "2015-05-23 03:26:03.938824"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 12]]
+  [1m[36mReview Load (0.6ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 12]]
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "reviews" ("created_at", "movie_id", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2015-05-23 03:38:33.892716"], ["movie_id", 12], ["updated_at", "2015-05-23 03:38:33.892716"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "reviews" ("created_at", "movie_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-05-23 03:39:13.826251"], ["movie_id", 12], ["name", "Flagon Flu"], ["updated_at", "2015-05-23 03:39:13.826251"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "reviews" ("created_at", "movie_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-05-23 03:41:46.722635"], ["movie_id", 12], ["name", ""], ["updated_at", "2015-05-23 03:41:46.722635"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "reviews" SET "name" = ?, "updated_at" = ? WHERE "reviews"."id" = 9  [["name", nil], ["updated_at", "2015-05-23 03:42:14.436292"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mReview Load (0.5ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 12]]
+  [1m[36mMovie Load (1.9ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = 1 LIMIT 1[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = 12 LIMIT 1
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 12]]
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 12]]
+  [1m[36mMovie Load (3.6ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = 1 LIMIT 1[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = 12 LIMIT 1
+  [1m[36mReview Load (0.5ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 12]]
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mSQL (2.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 12]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:20:12.051921"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:20:12.051921"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:20:12.058835"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:20:12.058835"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:20:12.062188"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:20:12.062188"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:20:12.065250"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:20:12.065250"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:20:12.068951"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:20:12.068951"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:20:12.072357"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:20:12.072357"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mMovie Load (0.7ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 13]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "AAAAAAAaaaaaaaaaaa"], ["created_at", "2015-05-23 04:23:12.455295"], ["movie_id", 13], ["name", "aaaaaaaaaa"], ["stars", 3], ["updated_at", "2015-05-23 04:23:12.455295"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["comment", "AAAAAAAaaaaaaaaaaa"], ["created_at", "2015-05-23 04:23:20.897173"], ["movie_id", 13], ["name", "aaaaaaaaaa"], ["stars", 3], ["updated_at", "2015-05-23 04:23:20.897173"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 10]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 11]]
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 13]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:27:31.344859"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:27:31.344859"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:27:31.352286"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:27:31.352286"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:27:31.356250"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:27:31.356250"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:27:31.359289"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:27:31.359289"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:27:31.369093"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:27:31.369093"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:27:31.374921"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:27:31.374921"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:27:31.411418"], ["movie_id", 2], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:27:31.411418"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Dancing in the park and doing smelly"], ["created_at", "2015-05-23 04:27:31.422038"], ["movie_id", 2], ["name", "Lover Boy"], ["stars", 3], ["updated_at", "2015-05-23 04:27:31.422038"]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 2]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:29:07.255549"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:29:07.255549"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:29:07.263090"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:29:07.263090"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:29:07.266397"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:29:07.266397"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:29:07.269410"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:29:07.269410"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:29:07.272926"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:29:07.272926"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:29:07.277030"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:29:07.277030"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:29:07.300439"], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:29:07.300439"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "Dancing in the park and doing smelly"], ["created_at", "2015-05-23 04:29:07.304144"], ["name", "Lover Boy"], ["stars", 3], ["updated_at", "2015-05-23 04:29:07.304144"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 18]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:29:54.316444"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:29:54.316444"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:29:54.324464"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:29:54.324464"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:29:54.328096"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:29:54.328096"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:29:54.331219"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:29:54.331219"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:29:54.334857"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:29:54.334857"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:29:54.338706"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:29:54.338706"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:29:54.361229"], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:29:54.361229"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "Dancing in the park and doing smelly"], ["created_at", "2015-05-23 04:29:54.365545"], ["name", "Lover Boy"], ["stars", 3], ["updated_at", "2015-05-23 04:29:54.365545"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:30:53.980714"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:30:53.980714"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:30:53.989182"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:30:53.989182"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:30:53.993203"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:30:53.993203"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:30:53.996529"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:30:53.996529"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:30:54.001015"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:30:54.001015"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:30:54.005275"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:30:54.005275"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:31:11.805390"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:31:11.805390"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:31:11.815166"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:31:11.815166"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:31:11.818788"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:31:11.818788"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:31:11.823157"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:31:11.823157"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:31:11.827235"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:31:11.827235"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:31:11.831183"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:31:11.831183"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:31:11.878324"], ["movie_id", 18], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:31:11.878324"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["comment", "Dancing in the park and doing smelly"], ["created_at", "2015-05-23 04:31:11.883867"], ["movie_id", 18], ["name", "Lover Boy"], ["stars", 3], ["updated_at", "2015-05-23 04:31:11.883867"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:32:26.005030"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:32:26.005030"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:32:26.015180"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:32:26.015180"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:32:26.018553"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:32:26.018553"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:32:26.022072"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:32:26.022072"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:32:26.025124"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:32:26.025124"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:32:26.027879"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:32:26.027879"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:33:42.456635"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:33:42.456635"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:33:42.463724"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:33:42.463724"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:33:42.467179"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:33:42.467179"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:33:42.470296"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:33:42.470296"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:33:42.473845"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:33:42.473845"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:33:42.476901"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:33:42.476901"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:33:42.516841"], ["movie_id", 18], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:33:42.516841"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:34:34.848024"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:34:34.848024"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:34:34.858302"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:34:34.858302"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:34:34.862648"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:34:34.862648"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:34:34.866880"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:34:34.866880"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:34:34.870004"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:34:34.870004"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:34:34.872926"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:34:34.872926"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:34:34.907548"], ["movie_id", 18], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:34:34.907548"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 18]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:37:09.574783"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:37:09.574783"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:37:09.584194"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:37:09.584194"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:37:09.587524"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:37:09.587524"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:37:09.592271"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:37:09.592271"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:37:09.597754"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:37:09.597754"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:37:09.601486"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:37:09.601486"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:37:09.647001"], ["movie_id", 18], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:37:09.647001"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[36m (0.9ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 18]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 19]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "reviews" WHERE "reviews"."id" = ?  [["id", 20]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 21]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 18]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 24]]
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 24]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 30]]
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 30]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 36]]
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 36]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 42]]
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 42]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 48]]
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 48]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 54]]
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 54]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 60]]
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 60]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 66]]
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 66]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 72]]
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 72]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" varchar(255), "total_gross" decimal, "created_at" datetime, "updated_at" datetime, "description" text, "released_on" date, "cast" varchar(255), "director" varchar(255), "duration" varchar(255), "image_file_name" varchar(255)) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "stars" integer, "comment" text, "movie_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX "index_reviews_on_movie_id" ON "reviews" ("movie_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150504100621')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121121163535')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121121180707')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121210234158')[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" varchar(255), "total_gross" decimal, "created_at" datetime, "updated_at" datetime, "description" text, "released_on" date, "cast" varchar(255), "director" varchar(255), "duration" varchar(255), "image_file_name" varchar(255)) 
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "stars" integer, "comment" text, "movie_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX "index_reviews_on_movie_id" ON "reviews" ("movie_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150504100621')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121121163535')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121121180707')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121210234158')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:39:51.126247"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:39:51.126247"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:39:51.133297"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:39:51.133297"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:39:51.136630"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:39:51.136630"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:39:51.139759"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:39:51.139759"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:39:51.142903"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:39:51.142903"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:39:51.146417"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:39:51.146417"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:39:51.187735"], ["movie_id", 1], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:39:51.187735"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+
+  [1m[36mMovie Load (1.8ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:42:44.022027"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:42:44.022027"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:42:44.030412"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:42:44.030412"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:42:44.034016"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:42:44.034016"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:42:44.038943"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:42:44.038943"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:42:44.043339"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:42:44.043339"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:42:44.046517"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:42:44.046517"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:42:44.087110"], ["movie_id", 1], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:42:44.087110"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["comment", "Dancing in the park and doing smelly"], ["created_at", "2015-05-23 04:42:44.092034"], ["movie_id", 1], ["name", "Lover Boy"], ["stars", 3], ["updated_at", "2015-05-23 04:42:44.092034"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-05-23 16:43:45 +1200
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (released_on <= '2015-05-23 04:43:45.513455')  ORDER BY released_on desc[0m
+  Rendered movies/index.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 176ms (Views: 166.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" varchar(255), "total_gross" decimal, "created_at" datetime, "updated_at" datetime, "description" text, "released_on" date, "cast" varchar(255), "director" varchar(255), "duration" varchar(255), "image_file_name" varchar(255)) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "stars" integer, "comment" text, "movie_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX "index_reviews_on_movie_id" ON "reviews" ("movie_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150504100621')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121121163535')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121121180707')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121210234158')[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "rating" varchar(255), "total_gross" decimal, "created_at" datetime, "updated_at" datetime, "description" text, "released_on" date, "cast" varchar(255), "director" varchar(255), "duration" varchar(255), "image_file_name" varchar(255)) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "stars" integer, "comment" text, "movie_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_reviews_on_movie_id" ON "reviews" ("movie_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150504100621')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121121163535')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121121180707')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121210234158')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["created_at", "2015-05-23 04:44:29.969375"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"], ["rating", "PG-13"], ["released_on", "2008-05-02"], ["title", "Iron Man"], ["total_gross", 318412101.0], ["updated_at", "2015-05-23 04:44:29.969375"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["created_at", "2015-05-23 04:44:29.976890"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"], ["rating", "PG"], ["released_on", "1978-12-15"], ["title", "Superman"], ["total_gross", 134218018.0], ["updated_at", "2015-05-23 04:44:29.976890"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["created_at", "2015-05-23 04:44:29.981278"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"], ["rating", "PG-13"], ["released_on", "2002-05-03"], ["title", "Spider-Man"], ["total_gross", 403706375.0], ["updated_at", "2015-05-23 04:44:29.981278"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["created_at", "2015-05-23 04:44:29.984848"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["director", "Tim Burton"], ["duration", "126 min"], ["image_file_name", "batman.jpg"], ["rating", "PG-13"], ["released_on", "1989-06-23"], ["title", "Batman"], ["total_gross", 251188924.0], ["updated_at", "2015-05-23 04:44:29.984848"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["created_at", "2015-05-23 04:44:29.988488"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["director", "Jean-Christophe 'Pitof' Comar"], ["duration", "101 min"], ["image_file_name", "catwoman.jpg"], ["rating", "PG-13"], ["released_on", "2004-07-23"], ["title", "Catwoman"], ["total_gross", 40200000.0], ["updated_at", "2015-05-23 04:44:29.988488"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("cast", "created_at", "description", "director", "duration", "image_file_name", "rating", "released_on", "title", "total_gross", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["cast", "Bruce Wayne, Gojira"], ["created_at", "2015-05-23 04:44:29.991992"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["director", "Ishiro Honda"], ["duration", "211 min"], ["image_file_name", "batman-vs-godzilla.jpg"], ["rating", "PG-13"], ["released_on", "2015-06-02"], ["title", "Batman vs. Godzilla"], ["total_gross", 387623910.0], ["updated_at", "2015-05-23 04:44:29.991992"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.6ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["comment", "Oh what a night"], ["created_at", "2015-05-23 04:44:30.032456"], ["movie_id", 1], ["name", "Man Child"], ["stars", 3], ["updated_at", "2015-05-23 04:44:30.032456"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["comment", "Dancing in the park and doing smelly"], ["created_at", "2015-05-23 04:44:30.036734"], ["movie_id", 1], ["name", "Lover Boy"], ["stars", 3], ["updated_at", "2015-05-23 04:44:30.036734"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+[0m
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."title" = 'Iron Man' LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-05-23 16:48:45 +1200
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.8ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on <= '2015-05-23 04:48:45.749439')  ORDER BY released_on desc
+  Rendered movies/index.html.erb within layouts/application (20.1ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 113ms (Views: 102.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/reviews.js?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/ironman.jpg" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/spiderman.jpg" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/catwoman.jpg" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/batman.jpg" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/background.jpg" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/superman.jpg" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/assets/add.png" for 127.0.0.1 at 2015-05-23 16:48:46 +1200
+
+
+Started GET "/movies/1" for 127.0.0.1 at 2015-05-23 16:48:49 +1200
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
+  Rendered movies/show.html.erb within layouts/application (13.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 179ms (Views: 175.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/movies/1/reviews" for 127.0.0.1 at 2015-05-23 16:48:52 +1200
+Processing by ReviewsController#index as HTML
+  Parameters: {"movie_id"=>"1"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews"  WHERE "reviews"."movie_id" = ?  [["movie_id", 1]]
+  Rendered reviews/index.html.erb within layouts/application (9.7ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 89ms (Views: 85.7ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddFieldsToReviews (20150523045437)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.4ms)[0m  [1mALTER TABLE "reviews" ADD "location" text[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150523045437"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+[0m
+
+
+Started GET "/movies" for 127.0.0.1 at 2015-05-23 22:43:59 +1200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.8ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on <= '2015-05-23 10:43:59.394695')  ORDER BY released_on desc
+  Rendered movies/index.html.erb within layouts/application (27.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 240ms (Views: 224.0ms | ActiveRecord: 1.2ms)

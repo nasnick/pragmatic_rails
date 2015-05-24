@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
   
   def destroy
-    @review = aReview.find(params[:id])
+    @review = Review.find(params[:id])
     @review.destroy
     redirect_to movies_url
   end
